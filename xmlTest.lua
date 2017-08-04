@@ -7,27 +7,28 @@
 
 local xml = require("xmlSimple").newParser()
 
-local testXml = '<testOne param="param1value">'
-testXml = testXml .. '<testTwo paramTwo="param2value">'
-testXml = testXml .. '<testThree>'
-testXml = testXml .. 'testThreeValue'
-testXml = testXml .. '</testThree>'
-testXml = testXml .. '<testThree duplicate="one" duplicate="two">'
-testXml = testXml .. 'testThreeValueTwo'
-testXml = testXml .. '</testThree>'
-testXml = testXml .. '<test_Four something="else">'
-testXml = testXml .. 'testFourValue'
-testXml = testXml .. '</test_Four>'
-testXml = testXml .. '<testFive>'
-testXml = testXml .. '<testFiveDeep>'
-testXml = testXml .. '<testFiveEvenDeeper>'
-testXml = testXml .. '<testSix someParam="someValue"/>'
-testXml = testXml .. '</testFiveEvenDeeper>'
-testXml = testXml .. '</testFiveDeep>'
-testXml = testXml .. '</testFive>'
-testXml = testXml .. 'testTwoValue'
-testXml = testXml .. '</testTwo>'
-testXml = testXml .. '</testOne>'
+local testXml = [[
+<testOne param="param1value">
+   <testTwo paramTwo="param2value">
+      <testThree>
+         testThreeValue
+      </testThree>
+      <testThree duplicate="one" duplicate="two">
+         testThreeValueTwo
+      </testThree>
+      <test_Four something="else">
+         testFourValue
+      </test_Four>
+      <testFive>
+         <testFiveDeep>
+            <testFiveEvenDeeper>
+               <testSix someParam="someValue"/>
+            </testFiveEvenDeeper>
+         </testFiveDeep>
+      </testFive>
+      testTwoValue
+   </testTwo>
+</testOne>]]
 
 
 local parsedXml = xml:ParseXmlText(testXml)
